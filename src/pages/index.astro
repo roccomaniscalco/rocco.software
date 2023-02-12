@@ -1,10 +1,29 @@
 ---
+import SocialLink from "../components/SocialLink.astro"
 import RootLayout from "../layouts/RootLayout.astro"
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/roccomaniscalco",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/rocco-maniscalco/",
+  },
+  {
+    name: "Email",
+    href: "mailto:roccomaniscalco2001@gmail.com",
+  }
+]
 ---
 
 <RootLayout title="Rocco Maniscalco">
   <main class="m-auto max-w-[50ch] p-6 text-center">
     <h1 class="m-0 text-5xl font-bold dark:text-white">Rocco Maniscalco</h1>
-    <p class="text-lg dark:text-white">Software Development Engineer</p>
+    <p class="text-xl dark:text-white">Software Development Engineer</p>
+    <div>
+      {socialLinks.map((link) => <SocialLink {...link} />)}
+    </div>
   </main>
 </RootLayout>
