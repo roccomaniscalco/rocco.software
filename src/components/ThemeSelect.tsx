@@ -36,8 +36,11 @@ const ThemeSelect = () => {
 
   return (
     <Listbox value={selectedTheme} onChange={handleChange}>
-      <div className="relative">
-        <Listbox.Button className="flex items-center gap-2 capitalize text-slate-700 hover:text-black focus:outline-0 dark:text-gray-300 dark:hover:text-white">
+      <div>
+        <Listbox.Button
+          aria-label="Select theme"
+          className="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+        >
           <Icon size={20} stroke={3} />
         </Listbox.Button>
         <Transition
@@ -48,15 +51,15 @@ const ThemeSelect = () => {
           leaveFrom="transform scale-100 opacity-100"
           leaveTo="transform scale-95 opacity-0"
         >
-          <Listbox.Options className="absolute right-0 z-10 mt-3 rounded bg-white py-1 shadow-md focus:outline-none dark:bg-gray-800">
+          <Listbox.Options className="absolute right-0 mt-2 rounded bg-white p-1 shadow-md dark:bg-gray-800">
             {themes.map((theme) => (
-              <Listbox.Option key={theme} value={theme}>
+              <Listbox.Option key={theme} value={theme} className="relative">
                 {({ active, selected }) => (
                   <div
-                    className={`flex cursor-pointer items-center justify-between px-3 py-1 pr-10 capitalize ${
+                    className={`flex cursor-pointer items-center justify-between rounded px-3 py-1 pr-10 capitalize ${
                       active
-                        ? "bg-slate-100 text-black dark:bg-gray-700 dark:text-white"
-                        : "text-slate-700 dark:text-gray-300"
+                        ? "bg-gray-100 text-black dark:bg-gray-700 dark:text-white"
+                        : "text-gray-700 dark:text-gray-300"
                     }`}
                   >
                     {theme}
