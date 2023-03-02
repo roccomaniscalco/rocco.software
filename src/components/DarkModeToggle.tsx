@@ -21,8 +21,12 @@ const DarkModeToggle = () => {
   }
 
   return (
-    <button className="dark:text-white" onClick={handleClick}>
-      {isDarkMode ? <IconMoonFilled /> : <IconSunFilled />}
+    <button
+      className="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+      onClick={handleClick}
+      aria-label={isDarkMode ? "Enable light mode" : "Enable dark mode"}
+    >
+      {isDarkMode ? <IconSunFilled /> : <IconMoonFilled />}
     </button>
   )
 }
