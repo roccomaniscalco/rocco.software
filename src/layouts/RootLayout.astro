@@ -1,19 +1,13 @@
 ---
 import DarkModeToggle from "../components/DarkModeToggle"
-
-export interface Props {
-  title: string
-}
-
-const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-pt-16 motion-safe:scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title} | Rocco Maniscalco</title>
+    <title>Rocco Maniscalco</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,9 +32,11 @@ const { title } = Astro.props
     >
       <div class="m-auto flex h-14 max-w-2xl items-center justify-between px-6">
         <nav class="flex gap-6">
-          <a href="" class="hover:text-black dark:hover:text-white">Projects</a>
-          <a href="" class="hover:text-black dark:hover:text-white">About</a>
-          <a href="" class="hover:text-black dark:hover:text-white">Blog</a>
+          <a class="hover:text-black dark:hover:text-white" href="/">About</a>
+          <a class="hover:text-black dark:hover:text-white" href="/#projects"
+            >Projects</a
+          >
+          <a class="hover:text-black dark:hover:text-white" href="">Blog</a>
         </nav>
         <DarkModeToggle client:only="react" />
       </div>

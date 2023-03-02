@@ -19,13 +19,13 @@ const projects = (await fetch(
 ).then((res) => res.json())) as Project[]
 ---
 
-<RootLayout title="Home">
+<RootLayout>
   <main class="mt-16">
     <h1 class="mb-2 text-5xl font-bold text-gray-900 dark:text-white">
       Rocco Maniscalco
     </h1>
     <p class="mb-16 text-lg">Software Development Engineer</p>
-    <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+    <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white" id="projects">
       Projects
     </h2>
     <div class="grid gap-3 sm:grid-cols-2">
