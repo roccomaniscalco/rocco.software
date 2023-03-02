@@ -1,0 +1,49 @@
+---
+import { IconArrowRight, IconBrandGithub } from "@tabler/icons-react"
+
+export interface Props {
+  owner: string
+  repo: string
+  description?: string
+  website?: string
+}
+
+const { owner, repo, description, website } = Astro.props
+const repoUrl = `https://github.com/${owner}/${repo}`
+console.log(`https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`)
+---
+
+<div
+  class="relative flex h-full flex-col justify-between rounded-lg border bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-800"
+>
+  <a
+    href={`https://github.com/${owner}/${repo}`}
+    class="absolute inset-0 flex-1 p-5 dark:text-gray-200"></a>
+  <div>
+    <h3 class="mb-4 text-xl font-bold dark:text-white">
+      {repo}
+    </h3>
+    <p class="mb-5 text-sm dark:text-gray-200">{description}</p>
+  </div>
+
+  <div class="flex gap-3">
+    <a
+      class="z-10 flex items-center gap-1 rounded-full border bg-gray-100 p-2 px-3 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      href={repoUrl}
+    >
+      <IconBrandGithub client:load className="inline" size={16} />
+      Github</a
+    >
+    {
+      website && (
+        <a
+          class="z-10 flex items-center gap-1 rounded-full border bg-gray-100 p-2 px-3 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          href={website}
+        >
+          Website
+          <IconArrowRight client:load size={16} />
+        </a>
+      )
+    }
+  </div>
+</div>
