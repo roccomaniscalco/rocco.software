@@ -22,7 +22,7 @@ const DarkModeToggle = () => {
 
   return (
     <button
-      className="text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+      className="hover:text-black dark:hover:text-white"
       onClick={handleClick}
       aria-label={isDarkMode ? "Enable light mode" : "Enable dark mode"}
     >

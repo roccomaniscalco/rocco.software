@@ -20,9 +20,14 @@ const projects = (await fetch(
 ---
 
 <RootLayout title="Home">
-  <main class="m-auto mt-12">
-    <h1 class="mb-2 text-5xl font-bold dark:text-white">Rocco Maniscalco</h1>
-    <h2 class="mb-12 text-xl dark:text-white">Software Development Engineer</h2>
+  <main class="mt-16">
+    <h1 class="mb-2 text-5xl font-bold text-gray-900 dark:text-white">
+      Rocco Maniscalco
+    </h1>
+    <p class="mb-16 text-lg">Software Development Engineer</p>
+    <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+      Projects
+    </h2>
     <div class="grid gap-3 sm:grid-cols-2">
       {projects.map((project) => <ProjectCard {...project} />)}
     </div>

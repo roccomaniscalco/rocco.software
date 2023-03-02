@@ -1,49 +1,53 @@
 ---
-import { IconArrowRight, IconBrandGithub } from "@tabler/icons-react"
+import {
+  IconArrowRight,
+  IconPointFilled,
+  IconStar,
+} from "@tabler/icons-react"
 
 export interface Props {
   owner: string
   repo: string
+  language: string
+  languageColor: string
+  stars: number
   description?: string
   website?: string
 }
 
-const { owner, repo, description, website } = Astro.props
+const { owner, repo, language, languageColor, description, stars } = Astro.props
 const repoUrl = `https://github.com/${owner}/${repo}`
-console.log(`https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`)
 ---
 
 <div
-  class="relative flex h-full flex-col justify-between rounded-lg border bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-800"
+  class="group relative flex flex-col justify-between rounded-lg border bg-white p-5 shadow-lg dark:border-gray-700 dark:bg-gray-800"
 >
-  <a
-    href={`https://github.com/${owner}/${repo}`}
-    class="absolute inset-0 flex-1 p-5 dark:text-gray-200"></a>
-  <div>
-    <h3 class="mb-4 text-xl font-bold dark:text-white">
+  <a href={repoUrl} class="absolute inset-0"></a>
+  <div class="mb-6">
+    <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
       {repo}
     </h3>
-    <p class="mb-5 text-sm dark:text-gray-200">{description}</p>
+    <p class="text-sm">{description}</p>
   </div>
-
-  <div class="flex gap-3">
-    <a
-      class="z-10 flex items-center gap-1 rounded-full border bg-gray-100 p-2 px-3 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-      href={repoUrl}
-    >
-      <IconBrandGithub client:load className="inline" size={16} />
-      Github</a
-    >
-    {
-      website && (
-        <a
-          class="z-10 flex items-center gap-1 rounded-full border bg-gray-100 p-2 px-3 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-          href={website}
-        >
-          Website
-          <IconArrowRight client:load size={16} />
-        </a>
-      )
-    }
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div
+        class="flex items-center gap-1 rounded-full border bg-gray-100 py-1 px-3 text-xs dark:border-gray-600 dark:bg-gray-700"
+      >
+        <IconPointFilled size={16} style={{ color: languageColor }} />
+        {language}
+      </div>
+      {
+        stars !== 0 && (
+          <div class="flex items-center gap-1 rounded-full border bg-gray-100 py-1 px-3 text-xs dark:border-gray-600 dark:bg-gray-700">
+            <IconStar size={16} />
+            {stars}
+          </div>
+        )
+      }
+    </div>
+    <IconArrowRight
+      className="translate-x-5 opacity-0 transition-all duration-100 group-hover:translate-x-0 group-hover:opacity-100"
+    />
   </div>
 </div>
