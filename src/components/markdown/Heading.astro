@@ -1,0 +1,29 @@
+---
+export interface Props {
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  href: string
+}
+
+const { as: HeadingElement, href } = Astro.props
+const asToClass = {
+  h1: "text-4xl mt-10 mb-4",
+  h2: "text-3xl mt-8 mb-3",
+  h3: "text-2xl mt-6 mb-2",
+  h4: "text-xl mt-4 mb-2",
+  h5: "text-lg mt-3 mb-1",
+  h6: "mt-3 mb-1",
+}
+---
+
+<div id={href.replace("#", "")} class={`${asToClass[HeadingElement]} group`}>
+  <HeadingElement
+    class={`${asToClass[HeadingElement]} align-middle inline mr-16 text-gray-900 dark:text-white font-bold`}
+  >
+    <slot />
+  </HeadingElement>
+  <a
+    href={href}
+    class="-ml-14 align-middle text-base text-gray-400 opacity-0 focus:opacity-100 group-hover:opacity-100"
+    >#
+  </a>
+</div>
