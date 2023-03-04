@@ -1,8 +1,8 @@
 ---
-import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react"
 import { Markdown } from "astro-remote"
 import Heading from "../../components/markdown/Heading.astro"
 import RootLayout from "../../layouts/RootLayout.astro"
+import ProjectLinks from "../../components/ProjectLinks.astro"
 
 type Project = {
   owner: string
@@ -36,10 +36,20 @@ export async function getStaticPaths() {
   }))
 }
 
-// params should always be defined, because if they are not, it will be a 404
+const injectProjectLinks = (text: string): string => {
+  const match = text.match(/^# (.*)$/m)
+  if (!match) return text
+
+  const h1EndIndex = text.indexOf(match[1]) + match[1].length
+  return `
+    ${text.slice(0, h1EndIndex)}
+    <ProjectLinks repoUrl="${repoUrl}" website="${website}"/> 
+    ${text.slice(h1EndIndex)} 
+    `
+}
+
 const { owner, repo } = Astro.params
 const { website } = Astro.props
-
 const repoUrl = `https://github.com/${owner}/${repo}`
 const projectReadmeText = await fetch(
   `https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`
@@ -47,38 +57,13 @@ const projectReadmeText = await fetch(
 ---
 
 <RootLayout>
-  <main class="mt-16">
-    <h2
-      class="mb-6 max-w-[29ch] break-words text-4xl font-bold text-gray-900 dark:text-white"
-      id="projects"
-    >
-      {repo}
-    </h2>
-    <div class="mb-16 flex flex-row gap-3">
-      <a
-        class="text-gray flex flex-1 items-center justify-center gap-2 rounded-lg border bg-white p-3 text-sm shadow-lg hover:underline dark:border-gray-700 dark:bg-gray-800"
-        href={repoUrl}
-      >
-        <IconBrandGithub size={16} />
-        <span>View on github</span>
-      </a>
-      {
-        website && (
-          <a
-            class="text-gray flex flex-1 items-center justify-center gap-2 rounded-lg border bg-white p-3 text-sm shadow-lg hover:underline dark:border-gray-700 dark:bg-gray-800"
-            href={website}
-          >
-            <IconExternalLink size={16} />
-            <span>Visit Website</span>
-          </a>
-        )
-      }
-    </div>
-
+  <main>
     <Markdown
-      content={projectReadmeText}
+      content={injectProjectLinks(projectReadmeText)}
+      sanitize={{ allowComponents: true }}
       components={{
         Heading,
+        ProjectLinks,
       }}
     />
   </main>

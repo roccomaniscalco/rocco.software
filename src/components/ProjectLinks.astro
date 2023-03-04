@@ -1,0 +1,31 @@
+---
+import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
+
+export interface props {
+    repoUrl: string;
+    website?: string;
+}
+
+const { repoUrl, website } = Astro.props;
+---
+
+<div class="mb-8 flex flex-row gap-2">
+  <a
+    class="text-gray flex flex-1 items-center justify-center gap-2 rounded-lg border bg-white p-3 text-sm shadow-lg hover:underline dark:border-gray-700 dark:bg-gray-800"
+    href={repoUrl}
+  >
+    <IconBrandGithub size={16} />
+    <span>View Source</span>
+  </a>
+  {
+    website && (
+      <a
+        class="text-gray flex flex-1 items-center justify-center gap-2 rounded-lg border bg-white p-3 text-sm shadow-lg hover:underline dark:border-gray-700 dark:bg-gray-800"
+        href={website}
+      >
+        <IconExternalLink size={16} />
+        <span>Visit Website</span>
+      </a>
+    )
+  }
+</div>
