@@ -4,8 +4,8 @@ import { IconArrowRight, IconPointFilled, IconStar } from "@tabler/icons-react"
 export interface Props {
   owner: string
   repo: string
-  language: string
-  languageColor: string
+  language?: string
+  languageColor?: string
   stars: number | string
   description?: string
   website?: string
@@ -26,12 +26,14 @@ const { owner, repo, language, languageColor, description, stars } = Astro.props
   </div>
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div
-        class="flex items-center gap-1 rounded-full border bg-gray-100 py-1 px-3 text-xs dark:border-gray-600 dark:bg-gray-700"
-      >
-        <IconPointFilled size={16} style={{ color: languageColor }} />
-        {language}
-      </div>
+      {
+        language && (
+          <div class="flex items-center gap-1 rounded-full border bg-gray-100 py-1 px-3 text-xs dark:border-gray-600 dark:bg-gray-700">
+            <IconPointFilled size={16} style={{ color: languageColor }} />
+            {language}
+          </div>
+        )
+      }
       {
         stars !== 0 && (
           <div class="flex items-center gap-1 rounded-full border bg-gray-100 py-1 px-3 text-xs dark:border-gray-600 dark:bg-gray-700">
@@ -42,7 +44,7 @@ const { owner, repo, language, languageColor, description, stars } = Astro.props
       }
     </div>
     <IconArrowRight
-      className="translate-x-5 opacity-0 transition-all duration-100 group-hover:translate-x-0 group-hover:opacity-100"
+      className="translate-x-5 opacity-0 transition-all duration-100 group-hover:translate-x-0 group-hover:opacity-100 pointer-events-none"
     />
   </div>
 </div>
