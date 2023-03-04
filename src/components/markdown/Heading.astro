@@ -5,25 +5,25 @@ export interface Props {
 }
 
 const { as: HeadingElement, href } = Astro.props
-const asToClass = {
-  h1: "text-4xl mt-10 mb-4",
-  h2: "text-3xl mt-8 mb-3",
-  h3: "text-2xl mt-6 mb-2",
-  h4: "text-xl mt-4 mb-2",
-  h5: "text-lg mt-3 mb-1",
-  h6: "mt-3 mb-1",
+
+const HEADING_CLASSES = {
+  h1: "text-[32px] pb-2 mb-4 border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white",
+  h2: "text-2xl mt-6 pb-2 mb-4 border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white",
+  h3: "text-xl mt-6 mb-4 text-gray-900 dark:text-white",
+  h4: "text-base mt-6 mb-4 text-gray-900 dark:text-white",
+  h5: "text-sm mt-6 mb-4 text-gray-900 dark:text-white",
+  h6: "text-sm mt-6 mb-4  text-gray-400",
 }
 ---
 
-<div id={href.replace("#", "")} class={`${asToClass[HeadingElement]} group`}>
-  <HeadingElement
-    class={`${asToClass[HeadingElement]} align-middle inline mr-16 text-gray-900 dark:text-white font-bold`}
-  >
-    <slot />
-  </HeadingElement>
+<HeadingElement
+  class={`${HEADING_CLASSES[HeadingElement]} group font-bold`}
+  id={href.replace("#", "")}
+>
+  <slot />
   <a
+    class="pl-2 align-middle text-xl font-light text-gray-400 opacity-0 focus:opacity-100 group-hover:opacity-100"
     href={href}
-    class="-ml-14 align-middle text-base text-gray-400 opacity-0 focus:opacity-100 group-hover:opacity-100"
     >#
   </a>
-</div>
+</HeadingElement>
