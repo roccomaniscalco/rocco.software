@@ -4,6 +4,9 @@ import Heading from "../../components/markdown/Heading.astro"
 import RootLayout from "../../layouts/RootLayout.astro"
 import ProjectLinks from "../../components/ProjectLinks.astro"
 import type { Project } from "../../types"
+import UnorderedList from "../../components/markdown/UnorderedList.astro"
+import OrderedList from "../../components/markdown/OrderedList.astro"
+import Anchor from "../../components/markdown/Anchor.astro"
 
 export interface Props {
   website?: string
@@ -54,6 +57,9 @@ const projectReadmeText = await fetch(
       components={{
         Heading,
         ProjectLinks,
+        ul: UnorderedList,
+        ol: OrderedList,
+        a: Anchor,
       }}
     />
   </main>
