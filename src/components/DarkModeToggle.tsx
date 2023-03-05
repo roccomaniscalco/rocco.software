@@ -1,4 +1,4 @@
-import { IconMoonFilled, IconSunFilled } from "@tabler/icons-react"
+import { IconMoon, IconSun } from "@tabler/icons-react"
 import { useState } from "react"
 
 const DarkModeToggle = () => {
@@ -26,7 +26,7 @@ const DarkModeToggle = () => {
       onClick={handleClick}
       aria-label={isDarkMode ? "Enable light mode" : "Enable dark mode"}
     >
-      {isDarkMode ? <IconSunFilled /> : <IconMoonFilled />}
+      {isDarkMode ? <IconSun /> : <IconMoon />}
     </button>
   )
 }

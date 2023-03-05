@@ -1,5 +1,6 @@
 ---
 import DarkModeToggle from "../components/DarkModeToggle"
+import { IconBrandGithub } from "@tabler/icons-react"
 ---
 
 <!DOCTYPE html>
@@ -26,19 +27,29 @@ import DarkModeToggle from "../components/DarkModeToggle"
       }
     </script>
   </head>
-  <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+  <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
     <header
       class="sticky top-0 z-20 bg-gray-50/80 backdrop-blur dark:bg-gray-900/80"
     >
       <div class="m-auto flex h-14 max-w-2xl items-center justify-between px-6">
-        <nav class="flex gap-6">
+        <nav class="flex gap-4">
           <a class="hover:text-black dark:hover:text-white" href="/">About</a>
           <a class="hover:text-black dark:hover:text-white" href="/#projects"
             >Projects</a
           >
           <a class="hover:text-black dark:hover:text-white" href="">Blog</a>
         </nav>
-        <DarkModeToggle client:only="react" />
+        <div class="flex gap-4">
+          <a
+            class="hover:text-black dark:hover:text-white"
+            href="https://github.com/roccomaniscalco"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconBrandGithub />
+          </a>
+          <DarkModeToggle client:only="react" />
+        </div>
       </div>
     </header>
     <div class="m-auto max-w-2xl px-6">
