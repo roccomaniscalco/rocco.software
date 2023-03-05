@@ -51,7 +51,7 @@ const projectReadmeText = await fetch(
 ---
 
 <RootLayout>
-  <main>
+  <article class="first:[&>*]:mt-0">
     <Markdown
       content={injectProjectLinks(projectReadmeText)}
       sanitize={{ allowComponents: true }}
@@ -64,5 +64,5 @@ const projectReadmeText = await fetch(
         a: Anchor,
       }}
     />
-  </main>
+  </article>
 </RootLayout>
