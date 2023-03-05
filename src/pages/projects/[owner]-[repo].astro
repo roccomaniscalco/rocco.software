@@ -3,24 +3,13 @@ import { Markdown } from "astro-remote"
 import Heading from "../../components/markdown/Heading.astro"
 import RootLayout from "../../layouts/RootLayout.astro"
 import ProjectLinks from "../../components/ProjectLinks.astro"
-
-type Project = {
-  owner: string
-  repo: string
-  description?: string
-  image: string
-  website: string
-  language?: string
-  languageColor?: string
-  stars: number | string
-  forks: string
-}
+import type { Project } from "../../types"
 
 export interface Props {
-  website: string
+  website?: string
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const projects = (await fetch(
     "https://gh-pinned.nxl.sh/api/user/roccomaniscalco"
   ).then((res) => res.json())) as Project[]
@@ -37,19 +26,20 @@ export async function getStaticPaths() {
 }
 
 const injectProjectLinks = (text: string): string => {
-  const match = text.match(/^# (.*)$/m)
-  if (!match) return text
+  const firstH1 = text.match(/^# (.*)$/m)?.[1]
+  if (!firstH1) return text
 
-  const h1EndIndex = text.indexOf(match[1]) + match[1].length
+  const h1EndIndex = text.indexOf(firstH1) + firstH1.length
   return `
     ${text.slice(0, h1EndIndex)}
-    <ProjectLinks repoUrl="${repoUrl}" website="${website}"/> 
+    <ProjectLinks repoUrl="${repoUrl}" ${website && `website="${website}"`}/> 
     ${text.slice(h1EndIndex)} 
     `
 }
 
 const { owner, repo } = Astro.params
 const { website } = Astro.props
+
 const repoUrl = `https://github.com/${owner}/${repo}`
 const projectReadmeText = await fetch(
   `https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`

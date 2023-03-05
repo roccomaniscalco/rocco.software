@@ -1,18 +1,7 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro"
 import RootLayout from "../layouts/RootLayout.astro"
-
-type Project = {
-  owner: string
-  repo: string
-  description?: string
-  image: string
-  website: string
-  language: string
-  languageColor: string
-  stars: number | string
-  forks: string
-}
+import type { Project } from "../types";
 
 const projects = (await fetch(
   "https://gh-pinned.nxl.sh/api/user/roccomaniscalco"
