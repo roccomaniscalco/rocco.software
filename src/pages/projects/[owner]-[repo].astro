@@ -6,6 +6,7 @@ import CodeSpan from "../../components/markdown/CodeSpan.astro"
 import Heading from "../../components/markdown/Heading.astro"
 import Note from "../../components/markdown/Note.astro"
 import OrderedList from "../../components/markdown/OrderedList.astro"
+import Paragraph from "../../components/markdown/Paragraph.astro"
 import UnorderedList from "../../components/markdown/UnorderedList.astro"
 import ProjectLinks from "../../components/ProjectLinks.astro"
 import RootLayout from "../../layouts/RootLayout.astro"
@@ -66,6 +67,7 @@ const projectReadmeText = await fetch(
         ul: UnorderedList,
         ol: OrderedList,
         a: Anchor,
+        p: Paragraph,
       }}
     />
   </article>

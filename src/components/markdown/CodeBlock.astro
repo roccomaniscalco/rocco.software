@@ -1,8 +1,9 @@
 ---
 import { Code } from "astro/components"
+import type { ILanguageRegistration } from "shiki";
 
-export interface CodeProps {
-  lang: string
+export interface Props {
+  lang: ILanguageRegistration
   code: string
 }
 

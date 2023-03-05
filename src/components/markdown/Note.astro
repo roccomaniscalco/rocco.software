@@ -19,7 +19,7 @@ const { type } = Astro.props
 const Icon = NOTE_ICONS[type]
 ---
 
-<div class={`${NOTE_CLASSES[type]} my-4 p-4 rounded-lg flex gap-2`}>
+<div class={`${NOTE_CLASSES[type]} my-4 px-4 pt-4 rounded-lg flex gap-2`}>
   <Icon />
   <div class="flex-1">
     <slot />
