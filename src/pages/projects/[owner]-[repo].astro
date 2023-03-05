@@ -1,12 +1,13 @@
 ---
 import { Markdown } from "astro-remote"
-import Heading from "../../components/markdown/Heading.astro"
-import RootLayout from "../../layouts/RootLayout.astro"
-import ProjectLinks from "../../components/ProjectLinks.astro"
-import type { Project } from "../../types"
-import UnorderedList from "../../components/markdown/UnorderedList.astro"
-import OrderedList from "../../components/markdown/OrderedList.astro"
 import Anchor from "../../components/markdown/Anchor.astro"
+import Heading from "../../components/markdown/Heading.astro"
+import Note from "../../components/markdown/Note.astro"
+import OrderedList from "../../components/markdown/OrderedList.astro"
+import UnorderedList from "../../components/markdown/UnorderedList.astro"
+import ProjectLinks from "../../components/ProjectLinks.astro"
+import RootLayout from "../../layouts/RootLayout.astro"
+import type { Project } from "../../types"
 
 export interface Props {
   website?: string
@@ -57,6 +58,7 @@ const projectReadmeText = await fetch(
       components={{
         Heading,
         ProjectLinks,
+        Note,
         ul: UnorderedList,
         ol: OrderedList,
         a: Anchor,
