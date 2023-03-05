@@ -1,6 +1,8 @@
 ---
 import { Markdown } from "astro-remote"
 import Anchor from "../../components/markdown/Anchor.astro"
+import CodeBlock from "../../components/markdown/CodeBlock.astro"
+import CodeSpan from "../../components/markdown/CodeSpan.astro"
 import Heading from "../../components/markdown/Heading.astro"
 import Note from "../../components/markdown/Note.astro"
 import OrderedList from "../../components/markdown/OrderedList.astro"
@@ -59,6 +61,8 @@ const projectReadmeText = await fetch(
         Heading,
         ProjectLinks,
         Note,
+        CodeSpan,
+        CodeBlock,
         ul: UnorderedList,
         ol: OrderedList,
         a: Anchor,
