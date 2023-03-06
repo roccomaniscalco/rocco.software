@@ -1,0 +1,74 @@
+---
+import { Markdown } from "astro-remote"
+import Anchor from "../../components/markdown/Anchor.astro"
+import CodeBlock from "../../components/markdown/CodeBlock.astro"
+import CodeSpan from "../../components/markdown/CodeSpan.astro"
+import Heading from "../../components/markdown/Heading.astro"
+import Note from "../../components/markdown/Note.astro"
+import OrderedList from "../../components/markdown/OrderedList.astro"
+import Paragraph from "../../components/markdown/Paragraph.astro"
+import UnorderedList from "../../components/markdown/UnorderedList.astro"
+import ProjectLinks from "../../components/ProjectLinks.astro"
+import RootLayout from "../../layouts/RootLayout.astro"
+import type { Project } from "../../types"
+
+export interface Props {
+  website?: string
+}
+
+export const getStaticPaths = async () => {
+  const projects = (await fetch(
+    "https://gh-pinned.nxl.sh/api/user/roccomaniscalco"
+  ).then((res) => res.json())) as Project[]
+
+  return projects.map((project) => ({
+    params: {
+      owner: project.owner,
+      repo: project.repo,
+    },
+    props: {
+      website: project.website,
+    },
+  }))
+}
+
+const injectProjectLinks = (text: string): string => {
+  const firstH1 = text.match(/^# (.*)$/m)?.[1]
+  if (!firstH1) return text
+
+  const h1EndIndex = text.indexOf(firstH1) + firstH1.length
+  return `
+    ${text.slice(0, h1EndIndex)}
+    <ProjectLinks repoUrl="${repoUrl}" ${website && `website="${website}"`}/> 
+    ${text.slice(h1EndIndex)} 
+    `
+}
+
+const { owner, repo } = Astro.params
+const { website } = Astro.props
+
+const repoUrl = `https://github.com/${owner}/${repo}`
+const projectReadmeText = await fetch(
+  `https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`
+).then((res) => res.text())
+---
+
+<RootLayout>
+  <article class="first:[&>*]:mt-0">
+    <Markdown
+      content={injectProjectLinks(projectReadmeText)}
+      sanitize={{ allowComponents: true }}
+      components={{
+        Heading,
+        ProjectLinks,
+        Note,
+        CodeSpan,
+        CodeBlock,
+        ul: UnorderedList,
+        ol: OrderedList,
+        a: Anchor,
+        p: Paragraph,
+      }}
+    />
+  </article>
+</RootLayout>

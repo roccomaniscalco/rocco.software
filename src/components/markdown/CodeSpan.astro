@@ -1,0 +1,9 @@
+---
+export interface Props {
+  code: string
+}
+
+const { code } = Astro.props
+---
+
+<code class="bg-gray-200 dark:bg-gray-700 rounded py-[2.7px] px-1" set:text={code} />

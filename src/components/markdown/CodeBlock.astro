@@ -1,0 +1,24 @@
+---
+import { Code } from "astro/components"
+import type { ILanguageRegistration } from "shiki";
+
+export interface Props {
+  lang: ILanguageRegistration
+  code: string
+}
+
+const { lang, code } = Astro.props
+---
+
+<div class="dark:hidden">
+  <Code code={code} lang={lang} theme={"min-light"} />
+</div>
+<div class="hidden dark:block">
+  <Code code={code} lang={lang} theme={"min-dark"} />
+</div>
+
+<style is:global>
+  pre.astro-code {
+    @apply my-4 rounded-lg border border-gray-200 !bg-white p-4 dark:border-gray-700 dark:!bg-gray-800;
+  }
+</style>
