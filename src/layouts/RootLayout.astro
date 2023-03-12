@@ -10,12 +10,19 @@ import { IconBrandGithub } from "@tabler/icons-react"
     <meta name="viewport" content="width=device-width" />
     <title>Rocco Maniscalco</title>
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     />
+    <noscript>
+      <link rel="stylesheet" href="$CSS&display=swap" />
+    </noscript>
     <!-- Apply theme -->
     <script is:inline>
       if (
@@ -45,10 +52,13 @@ import { IconBrandGithub } from "@tabler/icons-react"
             href="https://github.com/roccomaniscalco"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <IconBrandGithub />
           </a>
-          <DarkModeToggle client:only="react" />
+          <div class="h-6 w-6">
+            <DarkModeToggle client:only="react" />
+          </div>
         </div>
       </div>
     </header>
