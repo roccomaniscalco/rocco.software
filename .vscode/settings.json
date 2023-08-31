@@ -6,5 +6,9 @@
     "statusBarItem.remoteBackground": "#aa3331",
     "statusBarItem.remoteForeground": "#e7e7e7"
   },
-  "peacock.color": "#aa3331"
+  "peacock.color": "#aa3331",
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

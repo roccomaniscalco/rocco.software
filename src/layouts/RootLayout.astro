@@ -1,11 +1,17 @@
 ---
 import DarkModeToggle from "../components/DarkModeToggle"
 import { IconBrandGithub } from "@tabler/icons-react"
+import { ViewTransitions } from "astro:transitions"
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="scroll-pt-14 motion-safe:scroll-smooth">
+<!doctype html>
+<html
+  lang="en"
+  class="scroll-pt-14 motion-safe:scroll-smooth"
+  transition:animate="slide"
+>
   <head>
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Rocco Maniscalco</title>
@@ -24,19 +30,24 @@ import { IconBrandGithub } from "@tabler/icons-react"
       <link rel="stylesheet" href="$CSS&display=swap" />
     </noscript>
     <!-- Apply theme -->
-    <script is:inline>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark")
+    <script is:inline transition:persist>
+      const setDarkMode = () => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark")
+        }
       }
+      setDarkMode()
+      document.addEventListener("astro:after-swap", setDarkMode)
     </script>
   </head>
   <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
     <header
       class="sticky top-0 z-20 bg-gray-50/80 backdrop-blur dark:bg-gray-900/80"
+      transition:animate="none"
     >
       <div class="m-auto flex h-14 max-w-2xl items-center justify-between px-6">
         <nav class="flex gap-4">

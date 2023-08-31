@@ -9,5 +9,4 @@ module.exports = {
       sans: ["Poppins", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: ["prettier-plugin-tailwindcss"],
 }
