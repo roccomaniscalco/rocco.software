@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "rocco.software",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.5"
+    "@tailwindcss/vite": "^4.0.3",
+    "astro": "^5.2.5",
+    "tailwindcss": "^4.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.9"
   }
 }
