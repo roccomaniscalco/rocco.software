@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
 import Analytics from '@vercel/analytics/astro'
 ---
 
@@ -12,8 +12,8 @@ import Analytics from '@vercel/analytics/astro'
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body class="bg-neutral-950 px-10 text-neutral-100">
+  <body class="bg-neutral-950 px-6 text-sm text-neutral-400">
     <slot />
-		<Analytics>
+    <Analytics />
   </body>
 </html>
