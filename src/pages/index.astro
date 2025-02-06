@@ -7,8 +7,10 @@ import TwitterIcon from '../assets/twitter.svg'
 
 <Layout>
   <div class="flex h-dvh flex-col items-center justify-center gap-3">
-    <h1 class="text-center text-3xl text-neutral-50">Rocco Maniscalco</h1>
-    <p class="text-center text-pretty">
+    <h1 class="text-center font-mono text-2xl text-neutral-50">
+      Rocco Maniscalco
+    </h1>
+    <p class="text-center text-balance">
       Component Builder, Types Enjoyer, <i>and</i> Software Engineer!
     </p>
   </div>
@@ -17,7 +19,7 @@ import TwitterIcon from '../assets/twitter.svg'
   >
     <p class="text-center text-pretty">Let's connect</p>
     <nav class="rounded-full border border-neutral-800 bg-neutral-900">
-      <ul class="flex gap-5 px-5 py-3">
+      <ul class="flex gap-2 px-4 py-1">
         <li>
           <a
             class="fill-neutral-400 transition-colors ease-linear hover:fill-neutral-50"
@@ -25,7 +27,9 @@ import TwitterIcon from '../assets/twitter.svg'
             target="_blank"
             rel="noreferrer"
           >
-            <GitHubIcon class="h-4 w-4" />
+            <i class="grid h-8 w-8 place-items-center">
+              <GitHubIcon class="h-4 w-4" />
+            </i>
             <span class="sr-only">GitHub</span>
           </a>
         </li>
@@ -36,7 +40,9 @@ import TwitterIcon from '../assets/twitter.svg'
             target="_blank"
             rel="noreferrer"
           >
-            <TwitterIcon class="h-4 w-4" />
+            <i class="grid h-8 w-8 place-items-center">
+              <TwitterIcon class="h-4 w-4" />
+            </i>
             <span class="sr-only">Twitter</span>
           </a>
         </li>
@@ -47,7 +53,9 @@ import TwitterIcon from '../assets/twitter.svg'
             target="_blank"
             rel="noreferrer"
           >
-            <LinkedInIcon class="h-4 w-4" />
+            <i class="grid h-8 w-8 place-items-center">
+              <LinkedInIcon class="h-4 w-4" />
+            </i>
             <span class="sr-only">LinkedIn</span>
           </a>
         </li>
